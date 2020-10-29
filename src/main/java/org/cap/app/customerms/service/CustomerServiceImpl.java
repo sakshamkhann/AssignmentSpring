@@ -23,7 +23,7 @@ public class CustomerServiceImpl implements CustomerService {
         ValidateCustomer.checkName(name);
         ValidateCustomer.checkId(id);
         Customer customer = findById(id);
-        customer = checkExists(customer);
+        ValidateCustomer.checkCustomerExist(customer);
         customer.setName(name);
         customer.setId(id);
         repo.update(customer);
@@ -34,7 +34,7 @@ public class CustomerServiceImpl implements CustomerService {
         Customer customer = repo.findById(id);
         return customer;
     }
-    public Customer checkExists(Customer customer){
+    /*public Customer checkExists(Customer customer){
         try{
         ValidateCustomer.checkCustomerExist(customer);
         }
@@ -43,5 +43,5 @@ public class CustomerServiceImpl implements CustomerService {
             return newCustomer;
         }
         return customer;
-    }
+    }*/
 }
